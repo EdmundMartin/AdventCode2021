@@ -90,15 +90,13 @@ def iterate_last_winner(numbers: List[int], board_list: List[Board]) -> Tuple[in
     return last_number, last_winner
 
 
-def part1() -> int:
-    numbers, board_list = read_input("input.txt")
+def part1(numbers, board_list) -> int:
     win_num, win_board = iterate_first_winner(numbers, board_list)
     unmarked = win_board.get_unmarked_numbers()
     return sum(unmarked) * win_num
 
 
-def part2() -> int:
-    numbers, board_list = read_input("input.txt")
+def part2(numbers, board_list) -> int:
     win_num, win_board = iterate_last_winner(numbers, board_list)
     unmarked = win_board.get_unmarked_numbers()
     return sum(unmarked) * win_num
@@ -107,6 +105,7 @@ def part2() -> int:
 if __name__ == '__main__':
     import time
     start = time.time()
-    print(part1())
-    print(part2())
+    numbers, board_list = read_input("input.txt")
+    print(part1(numbers, board_list))
+    print(part2(numbers, board_list))
     print(time.time() - start)
